@@ -1,0 +1,23 @@
+header {
+  background: #000;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+section {
+  padding: 1rem 0;
+}
+
+section.highlight {
+  background: #bbb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+button {
+  cursor: pointer;
+}

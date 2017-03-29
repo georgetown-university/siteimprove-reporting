@@ -1,0 +1,20 @@
+{
+  "name": "siteimprove-reporting",
+  "version": "1.0.0",
+  "description": "Site to chart Siteimprove issues for a particular site",
+  "author": "Joni Halabi <joni.halabi@georgetown.edu>",
+  "license": "MIT",
+
+  "dependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-babel": "*",
+    "gulp-watch": "*",
+    "babel-preset-es2015": "*",
+
+    "jquery": "*",
+    "d3": "*",
+    "randomcolor": "*"
+  }
+}
