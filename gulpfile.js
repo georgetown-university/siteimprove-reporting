@@ -13,6 +13,8 @@ var vendorFiles = [
 ];
 
 var jsFiles = [
+  'assets/js/src/pfBarChart.js',
+  'assets/js/src/chart.js',
   'assets/js/src/functions.js'
  ];
 

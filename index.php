@@ -26,7 +26,7 @@
       <button id="getCurrentData" class="btn btn-primary">Get current data</button>
     </section>
 
-    <section aria-label="Select box of all Siteimprove sites">
+    <section aria-label="Create issue reports by site">
       <h2>Get your report</h2>
 
       <select class="custom-select" id="selectSite">
@@ -37,7 +37,28 @@
           </option>
         <?php endforeach; ?>
       </select>
+
+      <p class="pages hide">This site has <span>#</span> pages.</p>
     </section>
+
+    <section aria-label="Chart of A-level issues" class="chart hide">
+      <h3>A-Level issues</h3>
+
+      <div id="a_issues"></div>
+    </section>
+
+    <section aria-label="Chart of AA-level issues" class="chart hide">
+      <h3>AA-Level issues</h3>
+
+      <div id="aa_issues"></div>
+    </section>
+
+    <section aria-label="Chart of AAA-level issues" class="chart hide">
+      <h3>AAA-Level issues</h3>
+
+      <div id="aaa_issues"></div>
+    </section>
+
   </main>
 
   <script src="assets/js/siteimprove-vendor.min.js"></script>

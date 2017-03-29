@@ -14,6 +14,15 @@ $('#getCurrentData').click(function() {
 $('#selectSite').change(function() {
   let site = this.value;
 
+  // Clear out any old charts
+  $('#a_issues').html('');
+  $('#aa_issues').html('');
+  $('#aaa_issues').html('');
+
+  // Make sure charts will display
+  $('.chart, .pages').removeClass('hide');
+
+  // Generate charts
   $.ajax({
    url: 'actions/get_site_issues.php',
    datatype: 'json',
@@ -21,7 +30,12 @@ $('#selectSite').change(function() {
      site: site
    },
    success: function(data) {
-     console.log(data);
+     var dataObj = JSON.parse(data);
+     $('.pages span').html(dataObj.pages);
+
+     siChart.create(dataObj, 'a_issues');
+     siChart.create(dataObj, 'aa_issues');
+     siChart.create(dataObj, 'aaa_issues');
    }
   });
 });

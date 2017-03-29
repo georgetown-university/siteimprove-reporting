@@ -21,3 +21,11 @@ section.highlight {
 button {
   cursor: pointer;
 }
+
+select {
+  margin-bottom: 1rem;
+}
+
+.hide {
+  display: none;
+}
