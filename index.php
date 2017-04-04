@@ -28,7 +28,11 @@
 
     <section class="container" aria-label="Create issue reports by site">
       <h2>Get your report</h2>
-      <p>Select a site to see historical information on that site's A, AA, and AAA errors, warnings, and items to review.</p>
+      <p>
+        Select a site to see historical information on that site's A, AA, and AAA
+        errors, warnings, and items to review.  The total number of issues is the
+        sum of the number of pages where each unique issue exists.
+      </p>
 
       <select class="custom-select" id="selectSite">
         <option value="" disabled selected>Select a site...</option>
