@@ -23,24 +23,81 @@ foreach($sites as $site) {
   $data[$site_name]['reports'][date('Y-m-d H:i:s')] = array();
 
   // Get current accessibility data for this site.
-  $api_path = '/sites/' . $site['id'] . '/accessibility/pages';
+  $api_path = '/sites/' . $site['id'] . '/accessibility/issues';
   $current_data = makeAPICall($api_path);
 
-  // Count number of A vs. AA vs. AAA issues.
-  $a_issues = 0;
-  $aa_issues = 0;
-  $aaa_issues = 0;
+  // Count numbers of issues by conformance level and severity.
+  $a_error = 0;
+  $a_review = 0;
+  $a_warning = 0;
+  $aa_error = 0;
+  $aa_review = 0;
+  $aa_warning = 0;
+  $aaa_error = 0;
+  $aaa_review = 0;
+  $aaa_warning = 0;
 
-  foreach($current_data['items'] as $page) {
-    $a_issues += $page['a_issues'];
-    $aa_issues += $page['aa_issues'];
-    $aaa_issues += $page['aaa_issues'];
+  foreach($current_data['items'] as $item) {
+    switch ($item['conformance_level']) {
+      // A-level issues
+      case 'a':
+        switch ($item['severity']) {
+          case 'error':
+            $a_error += $item['pages'];
+            break;
+          case 'review':
+            $a_review += $item['pages'];
+            break;
+          case 'warning':
+            $a_warning += $item['pages'];
+            break;
+        }
+        break;
+
+      // AA-level issues
+      case 'aa':
+        switch ($item['severity']) {
+          case 'error':
+            $aa_error += $item['pages'];
+            break;
+          case 'review':
+            $aa_review += $item['pages'];
+            break;
+          case 'warning':
+            $aa_warning += $item['pages'];
+            break;
+        }
+        break;
+
+      // AAA-level issues
+      case 'aaa':
+        switch ($item['severity']) {
+          case 'error':
+            $aaa_error += $item['pages'];
+            break;
+          case 'review':
+            $aaa_review += $item['pages'];
+            break;
+          case 'warning':
+            $aaa_warning += $item['pages'];
+            break;
+        }
+        break;
+      }
   }
 
   // Save issue data to data array.
-  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['a_issues'] = $a_issues;
-  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aa_issues'] = $aa_issues;
-  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aaa_issues'] = $aaa_issues;
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['a_error'] = $a_error;
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['a_review'] = $a_review;
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['a_warning'] = $a_warning;
+
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aa_error'] = $aa_error;
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aa_review'] = $aa_review;
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aa_warning'] = $aa_warning;
+
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aaa_error'] = $aaa_error;
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aaa_review'] = $aaa_review;
+  $data[$site_name]['reports'][date('Y-m-d H:i:s')]['aaa_warning'] = $aaa_warning;
 }
 
 writeSavedData(json_encode($data));

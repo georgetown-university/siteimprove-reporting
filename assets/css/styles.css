@@ -1,21 +1,30 @@
+/* --- Base element styles --- */
+
 header {
-  background: #000;
+  background: #011e41; /* gu blue */
   color: #fff;
   padding: 1rem 0;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+b {
+  font-weight: bold;
+}
+
 main {
   padding: 2rem 0;
-}
-
-section {
-  padding: 1rem 0;
-}
-
-section.highlight {
-  background: #bbb;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
 }
 
 button {
@@ -24,6 +33,39 @@ button {
 
 select {
   margin-bottom: 1rem;
+}
+
+/* --- Page sections --- */
+
+section {
+  padding: 1rem 0;
+}
+
+section.highlight {
+  background: #6b666b; /* gu gray */
+  border-radius: 0.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+
+section.charts header {
+  background: #6b666b; /* gu gray */
+  margin-bottom: 2rem;
+}
+
+/* --- Extra classes --- */
+
+.pages {
+  font-weight: bold;
+}
+
+.chart {
+  margin-bottom: 2rem;
+}
+
+.chart:last-child {
+  margin-bottom: 0;
 }
 
 .hide {

@@ -15,12 +15,10 @@ $('#selectSite').change(function() {
   let site = this.value;
 
   // Clear out any old charts
-  $('#a_issues').html('');
-  $('#aa_issues').html('');
-  $('#aaa_issues').html('');
+  $('#a_error, #a_warning, #a_review, #aa_error, #aa_warning, #aa_review, #aaa_error, #aaa_warning, #aaa_review').html('');
 
   // Make sure charts will display
-  $('.chart, .pages').removeClass('hide');
+  $('.charts, .pages').removeClass('hide');
 
   // Generate charts
   $.ajax({
@@ -33,9 +31,17 @@ $('#selectSite').change(function() {
      var dataObj = JSON.parse(data);
      $('.pages span').html(dataObj.pages);
 
-     siChart.create(dataObj, 'a_issues');
-     siChart.create(dataObj, 'aa_issues');
-     siChart.create(dataObj, 'aaa_issues');
+     siChart.create(dataObj, 'a_error');
+     siChart.create(dataObj, 'a_warning');
+     siChart.create(dataObj, 'a_review');
+
+     siChart.create(dataObj, 'aa_error');
+     siChart.create(dataObj, 'aa_warning');
+     siChart.create(dataObj, 'aa_review');
+
+     siChart.create(dataObj, 'aaa_error');
+     siChart.create(dataObj, 'aaa_warning');
+     siChart.create(dataObj, 'aaa_review');
    }
   });
 });
