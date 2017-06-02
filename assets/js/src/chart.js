@@ -9,7 +9,7 @@ var siChart = {
     let chart = {};
     chart.el = $('#' + type)[0];
     chart.data = this.processData(data, type);
-    chart.colors = this.generateColors(chart, type);
+    chart.colors = this.generateColors(type);
 
     pfBarChart.display(chart, 'horizontal');
   },
@@ -33,22 +33,17 @@ var siChart = {
   /* ---
    * Function that generates an array of colors for the chart
    */
-  generateColors: function(chart, type) {
-    let count = chart.data.counts.length;
-    let attrs = { count: count };
-
+  generateColors: function(type) {
     if (type.includes('error')) {
-      attrs.hue = 'red'
+      return '#AD0A0E'
     }
 
     if (type.includes('warning')) {
-      attrs.hue = 'orange'
+      return '#D3550A'
     }
 
     if (type.includes('review')) {
-      attrs.hue = 'blue'
+      return '#4E44C2'
     }
-
-    return randomColor(attrs);
   }
 };
