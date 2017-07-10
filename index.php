@@ -28,7 +28,7 @@
 
       <p id="fetchingData">
         <span class="spinner"><span class="bounce1"></span><span class="bounce2"></span><span class="bounce3"></span></span>
-        Fetching current issue data.
+        Fetching current issue data. Now is a good time to get some tea or a snack. This will take a while.
       </p>
 
       <p id="doneFetchingData">Issue data is up-to-date!</p>
