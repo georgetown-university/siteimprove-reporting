@@ -23,15 +23,23 @@
     <section class="highlight container" aria-label="Fetch current Siteimprove data">
       <h2>Get the latest data</h2>
       <p>Make sure you have the latest issue data from Siteimprove.</p>
+
       <button id="getCurrentData" class="btn btn-danger">Get current data</button>
+
+      <p id="fetchingData">
+        <span class="spinner"><span class="bounce1"></span><span class="bounce2"></span><span class="bounce3"></span></span>
+        Fetching current issue data.
+      </p>
+
+      <p id="doneFetchingData">Issue data is up-to-date!</p>
     </section>
 
     <section class="container" aria-label="Create issue reports by site">
       <h2>Get your report</h2>
       <p>
-        Select a site to see historical information on that site's A, AA, and AAA
-        errors, warnings, and items to review.  The total number of issues is the
-        sum of the number of pages where each unique issue exists.
+        Select a site to see historical data on the number of A, AA, and AAA
+        errors, warnings, and review items for that site.  The total number of
+        issues is the sum of the number of pages where each unique issue exists.
       </p>
 
       <select class="custom-select" id="selectSite">

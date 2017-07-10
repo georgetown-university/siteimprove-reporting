@@ -6,7 +6,7 @@ var pfBarChart = {
   config: {
     barThickness:   40,      // thickness of individual bars
     barGutter:      8,       // space between bars
-    labelWidth:     170,     // label width
+    labelWidth:     120,     // label width
     labelHeight:    50,      // label height
     labelBaseline:  20,      // label text baseline
     labelColor:     'black', // text color for bar labels
@@ -54,12 +54,19 @@ var pfBarChart = {
     let base = this.svg.selectAll('g').data(this.chart.data.counts).enter().append('g');
 
     base.append('title')
-      .text((d, i) => { return 'Data for ' + this.chart.data.labels[i]; });
+      .text((d, i) => { return 'Data for ' + this.getLabel(i); });
 
     base.append('desc')
-      .text((d, i) => { return 'The number of ' + this.chart.data.labels[i] + ' is ' + d + ', which is ' + this.getBarSize(d) + '% of the total.'});
+      .text((d, i) => { return 'The number of ' + this.getLabel(i) + ' is ' + d + ', which is ' + this.getBarSize(d) + '% of the total.'});
 
     return base;
+  },
+
+  /* ---
+   * Helper function to get and format chart label.
+   */
+  getLabel: function(i) {
+    return this.chart.data.labels[i].split(' ')[0];
   },
 
   /* ---
@@ -111,7 +118,7 @@ var pfHorizonal = {
 
     // Draw the chart labels.
     chart.append('text')
-      .text((d, i) => { return pfBarChart.chart.data.labels[i]; })
+      .text((d, i) => { return pfBarChart.getLabel(i); })
       .attr('height', pfBarChart.config.barThickness)
       .attr('y',      (d, i) => { return this.barY(i, pfBarChart.config.labelBaseline); })
       .attr('fill',   pfBarChart.config.labelColor);
@@ -163,7 +170,7 @@ var pfVertical = {
 
     // Draw the chart labels.
     chart.append('text')
-      .text((d, i) => { return pfBarChart.chart.data.labels[i]; })
+      .text((d, i) => { return pfBarChart.getLabel(i); })
       .attr('height', pfBarChart.config.barThickness)
       .attr('transform', 'translate(60,0)')
       .attr('x',      (d, i) => { return this.barX(i) + '%'; })
